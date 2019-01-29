@@ -268,7 +268,7 @@ with the contents of the message. Care should be taken for issues
 with transitive connectivity due to NAT. If
 a node cannot connect to the originating node for a `SHUFFLEREPLY`,
 then it should not perform the shuffle. Similarly, the originating
-node could time out waiting for a shuffle reply and try with again
+node could time out waiting for a shuffle reply and try again
 with a lower TTL, until a TTL of zero reuses the connection in the
 case of NATed hosts.
 
@@ -394,7 +394,7 @@ Management protocol communicates these changes to the broadcast loop via
 `NeighborUp` and `NeighborDown` notifications.
 
 When a new node is added to the active list, the broadcast loop receives
-a `NeighborUp` notifications; it simply adds the node to the eager peer
+a `NeighborUp` notification; it simply adds the node to the eager peer
 list. On the other hand, when a node is removed with a `NeighborDown`
 notification, the loop has to consider if the node was an eager or lazy
 peer. If the node was a lazy peer, it doesn't need to do anything as the
@@ -526,6 +526,6 @@ Broadcast protocol:
   The authors do suggest lazy aggregation as a possible optimization nonetheless.
 - `GRAFT` messages similarly aggregate multiple message requests.
 - Missing messages and overlay repair are managed by a single background timer instead of
-  of creating timers left and right for every missing message; that's impractical from an
+  creating timers left and right for every missing message; that's impractical from an
   implementation point of view, at least in Go.
 - There is no provision for eager overlay repair on `NeighborDown` messages in Plumtree.
